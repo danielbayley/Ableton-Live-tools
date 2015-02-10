@@ -1,4 +1,4 @@
-![](banner.png?raw=true)
+![](https://cloud.githubusercontent.com/assets/7797479/6123630/be64a0da-b0fc-11e4-82e0-bca7d8893587.png)
 
 #Live Tools
 Live tools is a collection of useful additions to the excellent [Ableton Live](http://www.ableton.com/en/live) [DAW](http://en.wikipedia.org/wiki/Digital_audio_workstation). Currently, it improves integration of Live with other tools, but useful devices, racks and templates will be added in future for various audio tasks. [Contributions](#Contributing) are welcome.
@@ -10,7 +10,7 @@ Live Tools includes a few handy services for Live users wise enough to be runnin
 
 They are easy to use, simply open a `.workflow` file and choose the option to install. This just moves that workflow to your `~/Library/Services` folder which makes it available from the `Services` menu, in this case from within Live.
 
-![](services.png?raw=true)
+![](https://cloud.githubusercontent.com/assets/7797479/6123647/00608c06-b0fd-11e4-8273-1e8b272069de.png)
 
 Each of these services is just a wrapper for an internal `.sh`ell script  which can be accessed by choosing `Show Package Contents` from the contextual menu in Finder, so they can be easily modified.
 
@@ -22,7 +22,7 @@ If you specify `⌘S` as the keyboard shortcut under `App Shortcuts` rather than
 Open System Preferences and under `Keyboard` then `Shortcuts`, add (`+`) a new shortcut and choose Live as the application. Enter `Save Live Set as XML` for the menu title (or whatever you want, providing this exactly matches the name of the `.workflow` file, should you decide to alter it).
 
 #<div align="center">
-![](shortcuts.png?raw=true)
+![](https://cloud.githubusercontent.com/assets/7797479/6123649/03ff3c4a-b0fd-11e4-8153-a72e5b8e65aa.png)
 </div>
 
 ###Commit
@@ -50,6 +50,6 @@ In the spirit of collaboration, which hopefully this project will aid, there are
 ---
 
 ##Alternate Live icon
-![](icon.png?raw=true)
+![](https://cloud.githubusercontent.com/assets/7797479/6123652/12002f48-b0fd-11e4-908c-804b7f02d2b4.png)
 
 Also thrown in is an alternative icon for Live, if you prefer. This can be applied by choosing `Get Info` from the contextual menu in Finder with `Live.app` selected, and dragging the `Live.icns` file over the existing icon in the top left corner. [LiteIcon](http://www.freemacsoft.net/liteicon) is free and recommended for managing icons on OS X, if you find yourself doing this kind of thing often.
