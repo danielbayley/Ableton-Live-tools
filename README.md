@@ -12,16 +12,22 @@ They are easy to use, simply open a `.workflow` file and choose the option to in
 
 ![](https://cloud.githubusercontent.com/assets/7797479/6123647/00608c06-b0fd-11e4-8273-1e8b272069de.png)
 
-Each of these services is just a wrapper for an internal `.sh`ell script  which can be accessed by choosing `Show Package Contents` from the contextual menu in Finder, so they can be easily modified.
+Note that due to security measures on OS X, permission must first be granted to Applications before they can be manipulated from scripts and services.
+
+Open System Preferences and navigate to `Accessibility` under `Security & Privacy`. Click on the padlock icon and enter your admin password to access the list. Make sure Live is listed and enabled (you can just drag in `Live.app` from Finder if it isn't on the list). You might also want to grant access to System Events and Automator here. This only needs to be done once.
+
+<div align="center">
+![](access.png?raw=true)
+</div>
 
 ###Git integration
 `Save Live Set as XML.workflow` will automatically uncompress `.als` files in the current project so that they play nice with Git, since a Live set is actually [just gzipped XML](http://crooked-hideout.blogspot.co.uk/2012/01/ableton-live-set-is-gzipped-xml-ruby.html).
 
 If you specify `⌘S` as the keyboard shortcut under `App Shortcuts` rather than `Services` this will actually override the native `Save Live Set` command so that now Live will in effect always save uncompressed `.als` files. Live has no problem opening these, so no need to worry about having to re-compress anything.
 
-Open System Preferences and under `Keyboard` then `Shortcuts`, add (`+`) a new shortcut and choose Live as the application. Enter `Save Live Set as XML` for the menu title (or whatever you want, providing this exactly matches the name of the `.workflow` file, should you decide to alter it).
+Return to System Preferences and under `Keyboard` then `Shortcuts`, add (`+`) a new shortcut and choose Live as the application. Enter `Save Live Set as XML` for the menu title (or whatever you want, providing this exactly matches the name of the `.workflow` file, should you decide to alter it).
 
-#<div align="center">
+<div align="center">
 ![](https://cloud.githubusercontent.com/assets/7797479/6123649/03ff3c4a-b0fd-11e4-8153-a72e5b8e65aa.png)
 </div>
 

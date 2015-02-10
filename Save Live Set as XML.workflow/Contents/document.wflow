@@ -21,6 +21,113 @@
 					<true/>
 					<key>Types</key>
 					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/Users/Dan/Library/Automator/Run AppleScript.action</string>
+				<key>ActionName</key>
+				<string>Run AppleScript</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>try	tell application "System Events" to tell process "Live" to click menu item "Save Live Set" of menu 1 of menu bar item "File" of menu bar 1on error	tell application "System Preferences"				reveal anchor "Privacy_Accessibility" of pane id "com.apple.preference.security"		activate	end tell	beepend try</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunScriptAction</string>
+				<key>IgnoresInput</key>
+				<true/>
+				<key>InputUUID</key>
+				<string>409C43A3-63FD-43AA-A050-FFE07EF5BC36</string>
+				<key>Keywords</key>
+				<array>
+					<string>Run</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>7588B184-C2D6-4534-991A-7D607FE8D645</string>
+				<key>UUID</key>
+				<string>02B1BD07-8437-47FC-97A3-CDD873734019</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>use scripting additions
+#use script ""
+
+on run {input}
+
+	#
+
+	return input
+end run</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>649.000000:420.000000</string>
+				<key>nibPath</key>
+				<string>/Users/Dan/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
 						<string>com.apple.cocoa.string</string>
 					</array>
 				</dict>
@@ -59,7 +166,23 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>~/Lib*/Services/*[Ss]ave*Live*.workflow/*.sh</string>
+					<string>
+log=$(ls -t ~/Lib*/Pref*s/Ableton/Live*/Log.txt | head -1)
+
+#Current project
+cd "$(
+	grep file:// "$log"| tail -1 | sed -E 's|.*://(.*)//.*|\1|'|
+
+	perl -MURI::Escape -e "print uri_unescape '$(xargs)'"
+)"
+#Uncompress set/s
+find . -name \*.als | while read set
+do
+	gunzip -qS .${set##*.} "$set" &amp;&amp;
+
+	mv "${set%.*}" "$set"
+done
+exit 0</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -86,7 +209,7 @@
 				<key>IgnoresInput</key>
 				<true/>
 				<key>InputUUID</key>
-				<string>3E4A15C5-64D1-4355-BFB1-096AE4DCB36B</string>
+				<string>75EDD5DA-4F22-446E-80E3-C9F9A100AA02</string>
 				<key>Keywords</key>
 				<array>
 					<string>Shell</string>
@@ -96,9 +219,9 @@
 					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>B3D027A1-DA09-41CB-BBE1-223BF498EC1D</string>
+				<string>66EED712-6354-4999-B255-06B4862375F4</string>
 				<key>UUID</key>
-				<string>4FF018F6-52B4-4C52-BEDB-86138894436B</string>
+				<string>4E0B1D88-8CB7-40DE-B0CC-D88161EB1180</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -174,7 +297,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>649.000000:253.000000</string>
+				<string>649.000000:603.000000</string>
 				<key>nibPath</key>
 				<string>/Users/Dan/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
@@ -183,7 +306,15 @@
 		</dict>
 	</array>
 	<key>connectors</key>
-	<dict/>
+	<dict>
+		<key>E88644A7-5E94-4910-AAA0-9778D82DA187</key>
+		<dict>
+			<key>from</key>
+			<string>02B1BD07-8437-47FC-97A3-CDD873734019 - 02B1BD07-8437-47FC-97A3-CDD873734019</string>
+			<key>to</key>
+			<string>4E0B1D88-8CB7-40DE-B0CC-D88161EB1180 - 4E0B1D88-8CB7-40DE-B0CC-D88161EB1180</string>
+		</dict>
+	</dict>
 	<key>workflowMetaData</key>
 	<dict>
 		<key>serviceApplicationBundleID</key>

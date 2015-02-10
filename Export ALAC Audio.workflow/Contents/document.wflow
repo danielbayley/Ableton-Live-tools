@@ -21,6 +21,113 @@
 					<true/>
 					<key>Types</key>
 					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/Users/Dan/Library/Automator/Run AppleScript.action</string>
+				<key>ActionName</key>
+				<string>Run AppleScript</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>try	tell application "System Events" to tell process "Live" to click menu item "Export Audio/Video..." of menu 1 of menu bar item "File" of menu bar 1on error	tell application "System Preferences"				reveal anchor "Privacy_Accessibility" of pane id "com.apple.preference.security"		activate	end tell	beepend try</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunScriptAction</string>
+				<key>IgnoresInput</key>
+				<true/>
+				<key>InputUUID</key>
+				<string>F48EE947-D252-4944-BA4B-D3EA6A7FB4D8</string>
+				<key>Keywords</key>
+				<array>
+					<string>Run</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>DB13F774-3361-4F2C-AA49-6C9A677FDAD1</string>
+				<key>UUID</key>
+				<string>AAD80977-F543-4777-B43E-E6FD9F1F8CDA</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>use scripting additions
+#use script ""
+
+on run {input}
+
+	#
+
+	return input
+end run</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>649.000000:316.000000</string>
+				<key>nibPath</key>
+				<string>/Users/Dan/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
 						<string>com.apple.cocoa.string</string>
 					</array>
 				</dict>
@@ -59,7 +166,34 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>~/Lib*/Services/*[Ee]xport*[Aa]udio*.workflow/*.sh</string>
+					<string>
+log=$(ls -t ~/Lib*/Pref*s/Ableton/Live*/Log.txt | head -1)
+
+int=4 #s
+
+#Current project
+cd "$(
+	grep file:// "$log"| tail -1 | sed -E 's|.*://(.*)//.*|\1|'|
+
+	perl -MURI::Escape -e "print uri_unescape '$(xargs)'"
+)"
+#Wait for export
+touch .tmp
+while [ ! *.wav -nt .tmp ] &amp;&amp; [ ! *.aif -nt .tmp ]
+do
+	sleep $int
+done
+set "$(ls -t *.{wav,aif} | head -1)" #aif?(f)
+
+#Covert to ALAC
+afconvert -d alac "$1" "${1%.*}".m4a &amp;&amp;
+{
+	mv "$1" ~/.trash #original
+	rm .tmp; sleep 2
+	#Rename [any] accompanying .asd
+	[[ $1.asd ]] &amp;&amp; mv {"$1","${1%.*}".m4a}.asd
+}
+exit 0</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -83,6 +217,8 @@
 				</array>
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
+				<key>IgnoresInput</key>
+				<true/>
 				<key>InputUUID</key>
 				<string>70455B9E-A82B-44DF-9F35-4027D275969E</string>
 				<key>Keywords</key>
@@ -172,7 +308,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>649.000000:253.000000</string>
+				<string>649.000000:891.000000</string>
 				<key>nibPath</key>
 				<string>/Users/Dan/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
@@ -181,7 +317,15 @@
 		</dict>
 	</array>
 	<key>connectors</key>
-	<dict/>
+	<dict>
+		<key>8521B7A4-109F-40AE-9538-5B5782D01855</key>
+		<dict>
+			<key>from</key>
+			<string>AAD80977-F543-4777-B43E-E6FD9F1F8CDA - AAD80977-F543-4777-B43E-E6FD9F1F8CDA</string>
+			<key>to</key>
+			<string>226C6ED1-37D7-425A-AFAD-7CA1C606FA84 - 226C6ED1-37D7-425A-AFAD-7CA1C606FA84</string>
+		</dict>
+	</dict>
 	<key>workflowMetaData</key>
 	<dict>
 		<key>serviceApplicationBundleID</key>

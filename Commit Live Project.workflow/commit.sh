@@ -6,25 +6,19 @@ log=$(ls -t ~/Lib*/Pref*s/Ableton/Live*/Log.txt | head -1)
 
 [ ! -d .git ] && exit 1
 
-#Current
-project=\
-$(
-	grep file:// "$log"| tail -1 | sed 's|.*://(.*)//.*|\1|'|
+cd "$( #Current project
+	grep file:// "$log"| tail -1 | sed -E 's|.*://(.*)//.*|\1|'|
 
 	perl -MURI::Escape -e "print uri_unescape '$(xargs)'"
-)
-cd "$project" && set **/*.als
-
+)"
 #Uncompress set/s
-ext=.${1#*.}
+find . -name \*.als | while read set
+do
+	gunzip -qS .${set##*.} "$set" &&
 
-gunzip -qS $ext "$@" &&
-{
-	for file in "${@%.*}"
-	do
-		mv "$file"{,$ext}
-	done
-}
+	mv "${set%.*}" "$set"
+done
+
 #Commit
 if [ $(which github) ] #sourcetree
 then
@@ -32,7 +26,7 @@ then
 
 elif [ $(which gittower) ]
 then
-	gittower "$PWD"
+	gittower .
 else
 	osascript -e 'get text returned of (display dialog ¬
 	¬

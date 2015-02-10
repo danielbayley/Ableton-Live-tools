@@ -97,6 +97,8 @@
 				</array>
 				<key>OutputUUID</key>
 				<string>FC9E51CE-C3F5-45F3-AA51-78D29C0B7CA2</string>
+				<key>StartAction</key>
+				<false/>
 				<key>UUID</key>
 				<string>7E825CDC-1F14-463A-AA43-B9F4D88028BF</string>
 				<key>UnlocalizedApplications</key>
