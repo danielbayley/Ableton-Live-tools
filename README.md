@@ -17,7 +17,7 @@ Note that due to security measures on OS X, permission must first be granted to 
 Open System Preferences and navigate to `Accessibility` under `Security & Privacy`. Click on the padlock icon and enter your admin password to access the list. Make sure Live is listed and enabled (you can just drag in `Live.app` from Finder if it isn't on the list). You might also want to grant access to System Events and Automator here. This only needs to be done once.
 
 <div align="center">
-![](access.png?raw=true)
+![](https://cloud.githubusercontent.com/assets/7797479/6142880/28871e60-b1b7-11e4-917a-eb7c19f2d7c3.png)
 </div>
 
 ###Git integration
