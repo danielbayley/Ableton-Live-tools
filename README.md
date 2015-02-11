@@ -16,7 +16,7 @@ Note that due to security measures on OS X, permission must first be granted to 
 
 Open System Preferences and navigate to `Accessibility` under `Security & Privacy`. Click on the padlock icon and enter your admin password to access the list. Make sure Live is listed and enabled (you can just drag in `Live.app` from Finder if it isn't on the list). You might also want to grant access to System Events and Automator here. This only needs to be done once.
 
-<div align="center">
+#<div align="center">
 ![](https://cloud.githubusercontent.com/assets/7797479/6142880/28871e60-b1b7-11e4-917a-eb7c19f2d7c3.png)
 </div>
 
@@ -27,7 +27,7 @@ If you specify `⌘S` as the keyboard shortcut under `App Shortcuts` rather than
 
 Return to System Preferences and under `Keyboard` then `Shortcuts`, add (`+`) a new shortcut and choose Live as the application. Enter `Save Live Set as XML` for the menu title (or whatever you want, providing this exactly matches the name of the `.workflow` file, should you decide to alter it).
 
-<div align="center">
+#<div align="center">
 ![](https://cloud.githubusercontent.com/assets/7797479/6123649/03ff3c4a-b0fd-11e4-8153-a72e5b8e65aa.png)
 </div>
 
