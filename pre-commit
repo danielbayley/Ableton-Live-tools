@@ -1,7 +1,13 @@
-#Uncompress set/s
-find . -name \*.als | while read set
+#!/bin/sh
+# Get a list of project files which ARE actually in the commit
+git diff --cached --name-only --diff-filter=ACM | grep .als | while read set
 do
-	gunzip -qS .${set##*.} "$set" &&
-	mv "${set%.*}" "$set"
-	git add "$set"
+	# uncompress just GZip files (aka the nominal Live ALS project files)
+	# if the project is already uncompressed, it'll just skip this part
+	if file --mime-type "$set" | grep -q gzip$; then
+		gunzip -qS .${set##*.} "$set" &&
+		mv "${set%.*}" "$set"
+		# stage back the ALS project since we modified it
+		git add "$set"
+	fi
 done
