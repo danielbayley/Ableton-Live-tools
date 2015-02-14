@@ -3,6 +3,9 @@
 #Live Tools
 Live tools is a collection of useful additions to the excellent [Ableton Live](http://www.ableton.com/en/live) [DAW](http://en.wikipedia.org/wiki/Digital_audio_workstation). Currently, it improves integration of Live with other tools, but useful devices, racks and templates will be added in future for various audio tasks. [Contributions](#Contributing) are welcome.
 
+##Instant Setup
+If you just want to get started immediately on a project with version control, you can just run (open) the `SETUP.command` to clean up and use this repository as the basis for a project. Easy.
+
 ---
 
 ##Mac OS X [Services](http://macosxautomation.com/services)
@@ -30,6 +33,20 @@ Return to System Preferences and under `Keyboard` then `Shortcuts`, add (`+`) a 
 #<div align="center">
 ![](https://cloud.githubusercontent.com/assets/7797479/6123649/03ff3c4a-b0fd-11e4-8153-a72e5b8e65aa.png)
 </div>
+
+###Pre-commit [hook](http://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)
+While the above service works by uncompressing sets every time you save from Live, an even better method is to implement this as a `pre-commit` [Git Hook](http://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks).
+
+If you use this repository as the basis for a project as mentioned above, then all you have to do is run (open) the `SETUP.command`. This just adds the `pre-commit` hook and will clean out the repository ready for your Live project.
+
+Alternatively, you could setup a [Git template](http://git-scm.com/docs/git-init) including the hook which would apply it to any future repository using `git init`. Doing this on an existing repo will also work, and without overwriting anything.
+
+```bash
+cd ~/path/to/project
+mkdir -p ~/path/to/template/hooks &&
+cp pre-commit ~/path/to/template/hooks
+git config --global init.templatedir ~/path/to/template
+```
 
 ###Commit
 `Commit Live Project.workflow` will first ensure any `.als` files are uncompressed as above, but then also either open the current project in [GitHub for Mac](http://mac.github.com) or [Tower](http://www.git-tower.com) depending on which is installed, or otherwise prompt for a commit summary.

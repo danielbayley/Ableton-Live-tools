@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 log=$(ls -t ~/Lib*/Pref*s/Ableton/Live*/Log.txt | head -1)
 
