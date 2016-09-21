@@ -1,15 +1,10 @@
-#!/bin/sh
+#! /bin/zsh -f
 
-#Uncompress any Ableton Live set/s
+# Uncompress any Ableton Live set/s
 git diff --cached --name-only --diff-filter=ACM | grep .als |
-
-while read set
-do
-	if file --mime-type "$set"| grep -q gzip$
-	then
-		gunzip -qS .${set##*.} "$set" &&
-
-		mv "${set%.*}" "$set" && git add "$set"
-	fi
+while read
+do zcat -qf < $REPLY > .tmp && mv .tmp $REPLY && git add $_
 done
-#-------------------------------------------------------------------------------
+
+# TODO?
+# Decompile binary .asd
