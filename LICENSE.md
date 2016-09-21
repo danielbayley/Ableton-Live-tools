@@ -1,8 +1,6 @@
 The MIT License (MIT)
-
-Copyright (c) 20XX Daniel Bayley
-<daniel.bayley@me.com>
-[github.com/danielbayley](http://github.com/danielbayley)
+=====================
+Copyright © 2015 [Daniel Bayley](https://github.com/danielbayley) <daniel.bayley@me.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
