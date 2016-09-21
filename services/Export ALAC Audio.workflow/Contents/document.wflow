@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>409</string>
+	<string>419</string>
 	<key>AMApplicationVersion</key>
-	<string>2.5</string>
+	<string>2.6</string>
 	<key>AMDocumentVersion</key>
 	<string>2</string>
 	<key>actions</key>
@@ -51,7 +51,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>try	tell application "System Events" to tell process "Live" to click menu item "Export Audio/Video..." of menu 1 of menu bar item "File" of menu bar 1on error	tell application "System Preferences"				reveal anchor "Privacy_Accessibility" of pane id "com.apple.preference.security"		activate	end tell	beepend try</string>
+					<string>try	tell application "System Events" to tell process "Live" to click menu item "Export Audio/Video..." of menu 1 of menu bar item "File" of menu bar 1on error	tell application "System Preferences"				reveal anchor "Privacy_Accessibility" of pane id "com.apple.preference.security"		activate	end tellend try</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -67,6 +67,8 @@
 				</array>
 				<key>Class Name</key>
 				<string>RunScriptAction</string>
+				<key>Disabled</key>
+				<true/>
 				<key>IgnoresInput</key>
 				<true/>
 				<key>InputUUID</key>
@@ -108,11 +110,118 @@ end run</string>
 					</dict>
 				</dict>
 				<key>isViewVisible</key>
-				<true/>
+				<false/>
 				<key>location</key>
-				<string>649.000000:316.000000</string>
+				<string>529.000000:112.000000</string>
 				<key>nibPath</key>
 				<string>/Users/Dan/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/Users/Dan/Library/Automator/Run JavaScript.action</string>
+				<key>ActionName</key>
+				<string>Run JavaScript</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>try{	Application('Live').activate()	delay(.1)	Live = Application('System Events').processes.byName('Live')		Live.menuBars[0].menuBarItems.byName("File").menus[0].menuItems.byName("Export Audio/Video...").click()}catch (err){	sysprefs = Application('System Preferences')	sysprefs.panes.byId('com.apple.preference.security').anchors.byName('Privacy_Accessibility').reveal()	sysprefs.activate()}</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunJavaScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunJavaScriptAction</string>
+				<key>IgnoresInput</key>
+				<true/>
+				<key>InputUUID</key>
+				<string>361A36C5-FFF8-4E14-AD36-F0A94ADDD39D</string>
+				<key>Keywords</key>
+				<array>
+					<string>Run</string>
+					<string>JavaScript</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>B9597A86-4A07-4AAD-ABFB-B82203124DDC</string>
+				<key>UUID</key>
+				<string>EB667FF2-FD24-4E24-B76B-04AA18D4F63A</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>use = Application.currentApplication()
+use.includeStandardAdditions = true
+lib = Library ('lib')
+
+function run (input)
+{	//
+	return input
+}</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>529.000000:358.000000</string>
+				<key>nibPath</key>
+				<string>/Users/Dan/Library/Automator/Run JavaScript.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
@@ -160,46 +269,19 @@ end run</string>
 					</array>
 				</dict>
 				<key>ActionBundlePath</key>
-				<string>/Users/Dan/Library/Automator/Run Shell Script.action</string>
+				<string>/System/Library/Automator/Run Shell Script.action</string>
 				<key>ActionName</key>
 				<string>Run Shell Script</string>
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>
-log=$(ls -t ~/Lib*/Pref*s/Ableton/Live*/Log.txt | head -1)
-
-int=4 #s
-
-#Current project
-cd "$(
-	grep file:// "$log"| tail -1 | sed -E 's|.*://(.*)//.*|\1|'|
-
-	perl -MURI::Escape -e "print uri_unescape '$(xargs)'"
-)"
-#Wait for export
-touch .tmp
-while [ ! *.wav -nt .tmp ] &amp;&amp; [ ! *.aif -nt .tmp ]
-do
-	sleep $int
-done
-set "$(ls -t *.{wav,aif} | head -1)" #aif?(f)
-
-#Covert to ALAC
-afconvert -d alac "$1" "${1%.*}".m4a &amp;&amp;
-{
-	mv "$1" ~/.trash #original
-	rm .tmp; sleep 2
-	#Rename [any] accompanying .asd
-	[[ $1.asd ]] &amp;&amp; mv {"$1","${1%.*}".m4a}.asd
-}
-exit 0</string>
+					<string>~/Library/Services/*[Ee]xport*ALAC*.workflow/*.*sh</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
 					<integer>0</integer>
 					<key>shell</key>
-					<string>/bin/bash</string>
+					<string>/bin/sh</string>
 					<key>source</key>
 					<string></string>
 				</dict>
@@ -268,7 +350,7 @@ exit 0</string>
 					<key>2</key>
 					<dict>
 						<key>default value</key>
-						<true/>
+						<false/>
 						<key>name</key>
 						<string>CheckedForUserDefaultShell</string>
 						<key>required</key>
@@ -294,7 +376,7 @@ exit 0</string>
 					<key>4</key>
 					<dict>
 						<key>default value</key>
-						<string>/bin/bash</string>
+						<string>/bin/sh</string>
 						<key>name</key>
 						<string>shell</string>
 						<key>required</key>
@@ -308,9 +390,9 @@ exit 0</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>649.000000:891.000000</string>
+				<string>529.000000:541.000000</string>
 				<key>nibPath</key>
-				<string>/Users/Dan/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
+				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
@@ -318,12 +400,19 @@ exit 0</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>8521B7A4-109F-40AE-9538-5B5782D01855</key>
+		<key>707F1E86-073E-4E7D-867C-2110561A629C</key>
+		<dict>
+			<key>from</key>
+			<string>EB667FF2-FD24-4E24-B76B-04AA18D4F63A - EB667FF2-FD24-4E24-B76B-04AA18D4F63A</string>
+			<key>to</key>
+			<string>226C6ED1-37D7-425A-AFAD-7CA1C606FA84 - 226C6ED1-37D7-425A-AFAD-7CA1C606FA84</string>
+		</dict>
+		<key>7B9655CE-3C5F-4E1D-ACBA-2606DA6B8E50</key>
 		<dict>
 			<key>from</key>
 			<string>AAD80977-F543-4777-B43E-E6FD9F1F8CDA - AAD80977-F543-4777-B43E-E6FD9F1F8CDA</string>
 			<key>to</key>
-			<string>226C6ED1-37D7-425A-AFAD-7CA1C606FA84 - 226C6ED1-37D7-425A-AFAD-7CA1C606FA84</string>
+			<string>EB667FF2-FD24-4E24-B76B-04AA18D4F63A - EB667FF2-FD24-4E24-B76B-04AA18D4F63A</string>
 		</dict>
 	</dict>
 	<key>workflowMetaData</key>
@@ -331,7 +420,7 @@ exit 0</string>
 		<key>serviceApplicationBundleID</key>
 		<string>com.ableton.live</string>
 		<key>serviceApplicationPath</key>
-		<string>~/Applications/Music/Ableton/Live.app</string>
+		<string>/Applications/Ableton Live 9 Suite.app</string>
 		<key>serviceInputTypeIdentifier</key>
 		<string>com.apple.Automator.nothing</string>
 		<key>serviceOutputTypeIdentifier</key>
