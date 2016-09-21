@@ -1,0 +1,11 @@
+[attr]lfs filter=lfs diff=lfs merge=lfs -text
+
+*.als filter=gzip diff=gzip
+*.asd    lfs
+
+# Audio
+*.wav    lfs
+*.aif*   lfs
+*.m[p4]? lfs
+
+*.png    lfs
