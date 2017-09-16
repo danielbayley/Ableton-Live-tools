@@ -9,3 +9,5 @@
 *.m[p4]? lfs
 
 *.png    lfs
+
+*.als     linguist-vendored
